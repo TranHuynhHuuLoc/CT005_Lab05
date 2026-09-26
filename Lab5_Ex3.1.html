@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Trang giới thiệu cá nhân với hồ sơ học tập, tài liệu PDF, infographic và video YouTube.">
+	<title>Hồ sơ cá nhân | Lab 05</title>
+	<style>
+		:root {
+			color-scheme: light;
+			--ink: #202b29;
+			--muted: #566461;
+			--paper: #f5f3ec;
+			--line: #c9d0c8;
+			--accent: #b7432e;
+			--accent-soft: #e6b34f;
+			--surface: #fffefa;
+			--green: #526b51;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			background:
+				radial-gradient(ellipse at 4% 3%, rgba(230, 179, 79, 0.2), transparent 28rem),
+				var(--paper);
+			color: var(--ink);
+			font-family: Georgia, "Times New Roman", serif;
+		}
+
+		.page {
+			width: min(1160px, calc(100% - 48px));
+			margin: 0 auto;
+			padding: 54px 0 28px;
+		}
+
+		.eyebrow,
+		.section-label,
+		footer {
+			font-family: "Segoe UI", Tahoma, sans-serif;
+		}
+
+		.eyebrow {
+			margin: 0 0 14px;
+			color: var(--accent);
+			font-size: 0.78rem;
+			font-weight: 700;
+			text-transform: uppercase;
+		}
+
+		.masthead {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding-bottom: 18px;
+			border-bottom: 1px solid var(--line);
+		}
+
+		.masthead p {
+			margin: 0;
+			font-family: "Segoe UI", Tahoma, sans-serif;
+			font-size: 0.8rem;
+			font-weight: 700;
+		}
+
+		.masthead .course {
+			color: var(--muted);
+			font-weight: 400;
+		}
+
+		.hero {
+			display: grid;
+			grid-template-columns: minmax(0, 1.4fr) minmax(220px, 0.6fr);
+			gap: 48px;
+			align-items: end;
+			padding: 62px 0 58px;
+			border-bottom: 1px solid var(--line);
+		}
+
+		.hero .eyebrow {
+			margin-bottom: 16px;
+		}
+
+		h1 {
+			max-width: 760px;
+			margin: 0;
+			font-family: "Segoe UI", Tahoma, sans-serif;
+			font-size: clamp(2.4rem, 5vw, 4.5rem);
+			font-weight: 500;
+			line-height: 1.03;
+		}
+
+		.intro {
+			max-width: 650px;
+			margin: 20px 0 0;
+			color: var(--muted);
+			font-family: "Segoe UI", Tahoma, sans-serif;
+			font-size: 1.05rem;
+			line-height: 1.7;
+		}
+
+		.profile-note {
+			padding-left: 20px;
+			border-left: 3px solid var(--accent-soft);
+			font-family: "Segoe UI", Tahoma, sans-serif;
+		}
+
+		.profile-note span {
+			display: block;
+			color: var(--muted);
+			font-size: 0.75rem;
+			text-transform: uppercase;
+		}
+
+		.profile-note strong {
+			display: block;
+			margin-top: 7px;
+			font-family: Georgia, "Times New Roman", serif;
+			font-size: 1.2rem;
+			font-weight: 500;
+		}
+
+		.portfolio {
+			padding-top: 42px;
+		}
+
+		.portfolio-intro {
+			display: flex;
+			align-items: baseline;
+			gap: 14px;
+			margin-bottom: 24px;
+		}
+
+		.portfolio-intro p {
+			margin: 0;
+			color: var(--muted);
+			font-family: "Segoe UI", Tahoma, sans-serif;
+			font-size: 0.9rem;
+		}
+
+		section {
+			min-width: 0;
+			margin-top: 30px;
+		}
+
+		.section-heading {
+			display: flex;
+			align-items: baseline;
+			gap: 12px;
+			margin-bottom: 16px;
+			padding-bottom: 12px;
+			border-bottom: 1px solid var(--line);
+		}
+
+		.section-label {
+			color: var(--accent);
+			font-size: 0.75rem;
+			font-weight: 700;
+		}
+
+		h2 {
+			margin: 0;
+			font-size: 1.55rem;
+			font-weight: 500;
+		}
+
+		.product-meta {
+			margin: -4px 0 14px;
+			color: var(--muted);
+			font-family: "Segoe UI", Tahoma, sans-serif;
+			font-size: 0.88rem;
+			line-height: 1.6;
+		}
+
+		.media-frame {
+			overflow: hidden;
+			background: var(--surface);
+			border: 1px solid var(--line);
+		}
+
+		.infographic img {
+			display: block;
+			width: 100%;
+			height: auto;
+		}
+
+		.pdf-frame {
+			height: min(78vh, 820px);
+			min-height: 520px;
+		}
+
+		.pdf-frame iframe {
+			display: block;
+			width: 100%;
+			height: 100%;
+			border: 0;
+		}
+
+		.video-frame {
+			aspect-ratio: 16 / 9;
+		}
+
+		.video-frame iframe {
+			display: block;
+			width: 100%;
+			height: 100%;
+			border: 0;
+		}
+
+		.product-link {
+			display: inline-block;
+			margin-top: 10px;
+			color: var(--green);
+			font-family: "Segoe UI", Tahoma, sans-serif;
+			font-size: 0.9rem;
+			font-weight: 700;
+			text-underline-offset: 3px;
+		}
+
+		footer {
+			margin-top: 48px;
+			padding-top: 16px;
+			border-top: 1px solid var(--line);
+			color: var(--muted);
+			font-size: 0.82rem;
+			line-height: 1.6;
+		}
+
+		@media (max-width: 760px) {
+			.page {
+				width: min(100% - 32px, 600px);
+				padding-top: 36px;
+			}
+
+			.hero {
+				grid-template-columns: 1fr;
+				gap: 28px;
+				padding: 44px 0 38px;
+			}
+
+			.portfolio {
+				padding-top: 32px;
+			}
+
+			.pdf-frame {
+				height: 72vh;
+				min-height: 420px;
+			}
+
+			footer {
+				margin-top: 36px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<main class="page">
+		<header>
+			<div class="masthead">
+				<p>HỒ SƠ CÁ NHÂN</p>
+				<p class="course">CT005 · LAB 05</p>
+			</div>
+			<div class="hero">
+				<div>
+					<p class="eyebrow">Xin chào, rất vui được gặp bạn</p>
+					<h1>Trần Huỳnh Hữu Lộc</h1>
+					<p class="intro">Mình là sinh viên CT005, lớp học phần D03. Đây là trang giới thiệu cá nhân và các sản phẩm mình thực hiện trong Lab 05.</p>
+				</div>
+				<div class="profile-note">
+					<span>Mã số sinh viên</span>
+					<strong>B2605282</strong>
+				</div>
+			</div>
+		</header>
+
+		<div class="portfolio">
+			<div class="portfolio-intro">
+				<span class="section-label">BỘ SƯU TẬP</span>
+				<p>Ba sản phẩm trong quá trình học tập và thực hành.</p>
+			</div>
+
+			<section aria-labelledby="pdf-title">
+				<div class="section-heading">
+					<span class="section-label">Nhiệm vụ 1.2</span>
+					<h2 id="pdf-title">Tài liệu PDF</h2>
+				</div>
+				<p class="product-meta">Tài liệu được nhúng trực tiếp để bạn có thể đọc ngay trên trang.</p>
+				<div class="media-frame pdf-frame">
+					<iframe src="Lab05_Ex1.2.pdf" title="Tài liệu PDF của Nhiệm vụ 1.2, Lab 05">
+						<p>Trình duyệt không hỗ trợ xem PDF trực tiếp. <a href="Lab05_Ex1.2.pdf">Mở tài liệu PDF</a>.</p>
+					</iframe>
+				</div>
+				<a class="product-link" href="Lab05_Ex1.2.pdf" target="_blank" rel="noopener">Mở PDF trong tab mới</a>
+			</section>
+
+			<section aria-labelledby="infographic-title">
+				<div class="section-heading">
+					<span class="section-label">Nhiệm vụ 2.1</span>
+					<h2 id="infographic-title">Infographic</h2>
+				</div>
+				<p class="product-meta">Hình ảnh infographic được hiển thị đầy đủ theo đúng tỷ lệ gốc.</p>
+				<div class="media-frame infographic">
+					<img src="Lab05_Ex2.1.png" alt="Infographic sản phẩm Nhiệm vụ 2.1, Lab 05" loading="lazy">
+				</div>
+			</section>
+
+			<section aria-labelledby="video-title">
+				<div class="section-heading">
+					<span class="section-label">Nhiệm vụ 2.2</span>
+					<h2 id="video-title">Video YouTube</h2>
+				</div>
+				<p class="product-meta">Video được phát trực tiếp từ YouTube.</p>
+				<div class="media-frame video-frame">
+					<iframe
+						src="https://www.youtube.com/embed/5_J8V-kYRag"
+						title="Video YouTube cho Nhiệm vụ 2.2, Lab 05"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerpolicy="strict-origin-when-cross-origin"
+						allowfullscreen>
+					</iframe>
+				</div>
+			</section>
+		</div>
+
+		<footer>
+			CT005 · Lớp học phần D03 · MSSV B2605282. Tài liệu, infographic và video thuộc quyền của chủ sở hữu tương ứng.
+		</footer>
+	</main>
+</body>
+</html>
